@@ -5,5 +5,5 @@ import App from './App';
 test('renders home text', () => {
   const { getByText } = render(<App />);
 
-  expect(getByText(/home/i)).toBeInTheDocument();
+  expect(getByText(/home/i)).toBeTruthy();
 });
