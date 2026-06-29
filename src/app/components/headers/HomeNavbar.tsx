@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export function HomeNavbar () {
     const authMember = null ;
+     
     return (
         <div className="home-navbar">
   <Container className="navbar-container ">
