@@ -7,6 +7,46 @@
   background-size: cover;
 }
 
+
+.home-navbar .navbar-container {
+    margin-top: 55px;
+    height: 642px;
+}
+
+.home-navbar .navbar-container .menu{
+height: 50px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.home-navbar .navbar-container .menu .brand-logo{
+ width: 120px;
+ height: 30px;
+}
+
+.home-navbar .navbar-container .menu .links{
+ min-width: 700px;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.home-navbar .navbar-container .menu .links .login-button{
+ background: "#3776CC";
+ color: "f8f8ff";
+}
+
+.home-navbar .navbar-container .menu .user-avatar{
+ height: 50px;
+ width: 50px;
+ border-radius: 24px;
+}
+
+
+
 .home-navbar a {
   color: #f8f8ff;
   text-decoration: none;
