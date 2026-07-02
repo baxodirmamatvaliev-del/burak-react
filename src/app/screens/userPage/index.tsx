@@ -1,3 +1,4 @@
+import React from "react";
 import { Box, Container, Stack } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -31,9 +32,10 @@ export default function UserPage() {
                   <img
                     src={"/icons/default-user.svg"}
                     className={"order-user-avatar"}
+                    alt="User avatar"
                   />
                   <div className={"order-user-icon-box"}>
-                    <img src={"/icons/user-badge.svg"} />
+                    <img src={"/icons/user-badge.svg"} alt="User badge" />
                   </div>
                 </div>
                 <span className={"order-user-name"}>Martin</span>
@@ -54,7 +56,6 @@ export default function UserPage() {
     </div>
   );
 }
-
 
 
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { Box } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Button from "@mui/material/Button";
@@ -6,7 +7,11 @@ export function Settings() {
   return (
     <Box className={"settings"}>
       <Box className={"member-media-frame"}>
-        <img src={"/icons/default-user.svg"} className={"mb-image"} />
+        <img
+          src={"/icons/default-user.svg"}
+          className={"mb-image"}
+          alt="Member avatar"
+        />
         <div className={"media-change-box"}>
           <span>Upload image</span>
           <p>JPG, JPEG, PNG formats only!</p>
