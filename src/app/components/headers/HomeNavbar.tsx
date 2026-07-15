@@ -8,7 +8,9 @@ export  default  function HomeNavbar () {
 
     const [count ,setCount] = useState(0)
     
-  
+   const buttonHandler =() => {
+      setCount(count +1)
+   }
 
     return (
         <div className="home-navbar">
@@ -56,9 +58,12 @@ export  default  function HomeNavbar () {
             World's Most Delicious Cousine
             </Box>
             <Box className={"wel-txt"} >The Choise, not just a choice</Box>
-            <Box className={"service-txt"} >24 hours service</Box>
+            <Box className={"service-txt"} >{count} hours service</Box>
             <Box className={"signup"}>
-                {!authMember ? (<Button variant={"contained"} className={"sigup-botton"}> SIGN UP</Button>): null}
+                {!authMember ? (
+                  <Button variant={"contained"} className={"sigup-botton"} 
+                  onClick={buttonHandler}> 
+                 SIGN UP</Button>): null}
             </Box>
         </Stack>
         <Box className={"logo-frame"}>
