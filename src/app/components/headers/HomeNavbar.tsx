@@ -1,15 +1,27 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export  default  function HomeNavbar () {
     const authMember = null ;
 
-    const [count ,setCount] = useState(0)
+    const [count ,setCount] = useState<number>(0);
+    const [value ,setvalue] = useState<boolean>(true);
     
+    useEffect( () => {
+        console.log("componentDidMount",count); // DATA olib kelamiz DB 에서,  useEffect doim bir martda ishga tushadi LEKIN [] GA malum bir qiymatni kiritsak osha qiymat ozgargan vaqt ishga tushaveradi.
+         setCount(count +1)
+
+     return () =>{
+        console.log("componentWillUnmount");
+     }
+
+    }, [value]);
+
+    /** HANDLERS **/
    const buttonHandler =() => {
-      setCount(count +1)
+      setvalue(!value)                      // qarama qarshi bolsin TRUE bolsa FOLSE , FOLSE bolsa TRUE 
    }
 
     return (
