@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React, { Component } from "react";
 
 interface TestState {
@@ -17,6 +19,7 @@ class Test extends Component<Record<string, never>, TestState> {
       year: 1964,
     };
   }
+
 
   changeDetail = () => {
     this.setState({
