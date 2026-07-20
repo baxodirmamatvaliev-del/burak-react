@@ -5,6 +5,7 @@ const initialState: HomePageState = {
   popularDishes: [],
   newDishes: [],
   topUsers: [],
+  events: "",
 };
 
 const homePageSlice = createSlice({
@@ -19,6 +20,9 @@ const homePageSlice = createSlice({
     },
     setTopUsers:(state , action ) => {
       state.topUsers = action.payload;
+    },
+      setevets:(state , action ) => {
+      state.events = action.payload;
     },
   },
 });

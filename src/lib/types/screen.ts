@@ -12,6 +12,7 @@ export interface HomePageState{
     popularDishes: Product[];
     newDishes: Product[];
     topUsers: Member[];
+    events: string;
 }
 
 /** PRODUCTS PAGE **/
