@@ -14,6 +14,7 @@ import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
+import "../../../css/home.css"
 
 /** REDUX SLICE & SELECTOR **/
 
@@ -33,11 +34,11 @@ export default function HomePage() {
     product.getProducts({
       page: 1,
       limit: 4,
-      order: "productView",
+      order: "productViews",
       // productCollection: ProductCollection.DISH,
     })
     .then((data) =>{
-    setNewDishes(data);
+    setPopularDishes(data);
     })
     .catch((err) => console.log(err))
      
@@ -48,7 +49,7 @@ export default function HomePage() {
       productCollection: ProductCollection.DISH,
     })
     .then((data) =>{
-     setPopularDishes(data);
+     setNewDishes(data);
     })
     .catch((err) => console.log(err))
 

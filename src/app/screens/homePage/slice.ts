@@ -21,9 +21,7 @@ const homePageSlice = createSlice({
     setTopUsers:(state , action ) => {
       state.topUsers = action.payload;
     },
-      setevets:(state , action ) => {
-      state.events = action.payload;
-    },
+ 
   },
 });
 

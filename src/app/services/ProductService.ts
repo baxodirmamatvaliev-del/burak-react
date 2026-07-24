@@ -18,11 +18,11 @@ class ProductService {
              url += `&productCollection=${input.productCollection}`;
          if(input.search) url += `&search=${input.search}`;
          
-         const result = await axios.get(url);
-         console.log("result:", result);
+         const {data}= await axios.get(url);
+         console.log("result:", data);
 
 
-         return result.data;
+         return data;
         }catch(err){
          console.log("Error, getProduct:", err);
          throw err;

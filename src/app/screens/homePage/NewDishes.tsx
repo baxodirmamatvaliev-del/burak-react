@@ -36,9 +36,7 @@ export default function PopularDishes() {
             <CssVarsProvider>
               {newDishes.length !== 0 ? (
                 newDishes.map((product: Product) => {
-                   const imagePath = product.productImages?.[0]
-                                ? `${serverApi}/${product.productImages[0]}`
-                                   : "/icons/noimage-list.svg";
+                  const imagePath = `${serverApi}/${product.productImages[0]}`
                     const sizeVolume =   product.productCollection === ProductCollection.DRINK
                      ? product.productVolume + "l" :
                       product.productSize + " size";          

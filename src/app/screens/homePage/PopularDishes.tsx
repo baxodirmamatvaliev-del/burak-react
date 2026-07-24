@@ -38,9 +38,7 @@ export default function PopularDishes() {
             {popularDishes.length !== 0 ? (
               popularDishes.map((product: Product ) => {
                 
-          const imagePath = product.productImages?.[0]
-              ? `${serverApi}/${product.productImages[0]}`
-                 : "/icons/noimage-list.svg";
+         const imagePath = `${serverApi}/${product.productImages[0]}`
 
                 return (
                   <CssVarsProvider key={product._id}>
