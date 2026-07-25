@@ -1,5 +1,6 @@
-import { configureStore, ThunkAction, Action, AnyAction } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import HomePageReducer from './screens/homePage/slice';
+import ProductsPageReducer from './screens/producsPage/slice';
 import reduxLogger from "redux-logger";
 
 export const store = configureStore({
@@ -20,7 +21,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
-function ProductsPageReducer(state: unknown, action: AnyAction): unknown {
-  throw new Error('Function not implemented.');
-}
-
