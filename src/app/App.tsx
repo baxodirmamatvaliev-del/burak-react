@@ -18,13 +18,22 @@ import useBasket from './hooks/useBasket';
 
 function App() {
 const location = useLocation();
-const { cartItems, onAdd } = useBasket();
+const { cartItems, onAdd , onRemove,onDelate, onDeleteAll} = useBasket();
   return (  
      <>
         {location.pathname === "/" ? (
-        <HomeNavbar cartItems={cartItems}/> 
+        <HomeNavbar cartItems={cartItems}
+         onAdd ={onAdd}
+         onRemove={onRemove}
+         onDelate={onDelate} 
+         onDeleteAll={onDeleteAll}
+         /> // Props 
         ) : (
-         <OtherNavbar cartItems={cartItems}/>
+         <OtherNavbar cartItems={cartItems} 
+          onAdd = {onAdd}
+          onRemove={onRemove}
+           onDelate={onDelate} 
+           onDeleteAll={onDeleteAll}/>
         )}
         <Switch>
           <Route path="/products">

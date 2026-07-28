@@ -6,10 +6,14 @@ import { CartItem } from "../../../lib/types/search";
 
 interface HomeNavbarProps {
   cartItems: CartItem[];
+  onAdd: (item: CartItem) => void;
+  onRemove: (item: CartItem) => void;
+  onDelate: (item: CartItem) => void;
+  onDeleteAll: () => void;
 }
 
 export  default  function HomeNavbar (props: HomeNavbarProps) {
-   const {cartItems} = props;
+   const { cartItems, onAdd, onRemove, onDelate, onDeleteAll } = props;
  
     const authMember = null ;
 
@@ -60,7 +64,13 @@ export  default  function HomeNavbar (props: HomeNavbarProps) {
         <Box className={"hover-line"} >
         <NavLink to="/help" activeClassName={"underline"}>help</NavLink>
       </Box> 
-      <Basket cartItems={cartItems}/>
+      <Basket
+        cartItems={cartItems}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        onDelate={onDelate}
+        onDeleteAll={onDeleteAll}
+      />
       {!authMember ? (<Box><Button variant="contained" className="login-button">Login</Button>
       </Box>
     ) : (
