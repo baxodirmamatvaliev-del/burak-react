@@ -37,13 +37,18 @@ const handlerLoginClose= () => setLoginOpen(false);
          onRemove={onRemove}
          onDelate={onDelate} 
          onDeleteAll={onDeleteAll}
+         setSignupOpen={setSignupOpen}
+         setLoginOpen={setLoginOpen}
          /> // Props 
         ) : (
          <OtherNavbar cartItems={cartItems} 
           onAdd = {onAdd}
           onRemove={onRemove}
            onDelate={onDelate} 
-           onDeleteAll={onDeleteAll}/>
+           onDeleteAll={onDeleteAll}
+           setSignupOpen={setSignupOpen}
+           setLoginOpen={setLoginOpen}
+           />
         )}
         <Switch>
           <Route path="/products">

@@ -113,7 +113,7 @@ export default function Basket(props: BasketProps) {
 
               return (
 
-              <Box className={"basket-info-box"}>
+              <Box className={"basket-info-box"} key={item._id}>
                 <div className={"cancel-btn"}>
                   <CancelIcon color={"primary"} onClick={()=> onDelate(item)} />
                 </div>

@@ -10,31 +10,16 @@ interface HomeNavbarProps {
   onRemove: (item: CartItem) => void;
   onDelate: (item: CartItem) => void;
   onDeleteAll: () => void;
+  setSignupOpen: (isOpen: boolean) => void;
+  setLoginOpen: (isOpen: boolean) => void;
 }
 
 export  default  function HomeNavbar (props: HomeNavbarProps) {
-   const { cartItems, onAdd, onRemove, onDelate, onDeleteAll } = props;
+   const { cartItems, onAdd, onRemove, onDelate, onDeleteAll,setSignupOpen ,setLoginOpen} = props;
  
     const authMember = null ;
 
-    const [count ,setCount] = useState<number>(0);
-    const [value ,setvalue] = useState<boolean>(true);
     
-    useEffect( () => {
-        console.log("componentDidMount",count); // DATA olib kelamiz DB 에서,  useEffect doim bir martda ishga tushadi LEKIN [] GA malum bir qiymatni kiritsak osha qiymat ozgargan vaqt ishga tushaveradi.
-         setCount(count +1)
-
-     return () =>{
-        console.log("componentWillUnmount");
-     }
-
-    }, [value]);
-
-    /** HANDLERS **/
-   const buttonHandler =() => {
-      setvalue(!value)                      // qarama qarshi bolsin TRUE bolsa FOLSE , FOLSE bolsa TRUE 
-   }
-
     return (
         <div className="home-navbar">
   <Container className="navbar-container ">
@@ -71,7 +56,8 @@ export  default  function HomeNavbar (props: HomeNavbarProps) {
         onDelate={onDelate}
         onDeleteAll={onDeleteAll}
       />
-      {!authMember ? (<Box><Button variant="contained" className="login-button">Login</Button>
+      {!authMember ? (<Box><Button variant="contained" className="login-button" onClick={() => setLoginOpen(true)}
+      >Login</Button>
       </Box>
     ) : (
     <img  className="user-avatar"
@@ -87,11 +73,11 @@ export  default  function HomeNavbar (props: HomeNavbarProps) {
             World's Most Delicious Cousine
             </Box>
             <Box className={"wel-txt"} >The Choise, not just a choice</Box>
-            <Box className={"service-txt"} >{count} hours service</Box>
+            <Box className={"service-txt"} > 23 hours service</Box>
             <Box className={"signup"}>
                 {!authMember ? (
                   <Button variant={"contained"} className={"sigup-botton"} 
-                  onClick={buttonHandler}> 
+                  onClick={()=> setSignupOpen(true)}> 
                  SIGN UP</Button>): null}
             </Box>
         </Stack>
