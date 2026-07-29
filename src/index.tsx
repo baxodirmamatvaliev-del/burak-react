@@ -9,16 +9,20 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import { BrowserRouter as Router,} from "react-router-dom";
 import './css/index.css';
+import ContextProvider from './app/context/ContextProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ContextProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
           <App />
         </Router>
       </ThemeProvider>
+      </ContextProvider>
+
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
