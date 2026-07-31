@@ -20,6 +20,7 @@ import ProductService from "../../services/ProductService";
 import { serverApi } from "../../../lib/config";
 import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
+import useBasket from "../../hooks/useBasket";
 
 
 /** REDUX SLICE & SELECTOR **/
@@ -31,12 +32,10 @@ const producsRetriever = createSelector(
 retriveProducts, (products) =>
     ({ products }));
 
-interface ProductsProps {
-  onAdd : (item: CartItem) => void;
-} 
 
-export default function Products(props: ProductsProps) {
-const {onAdd} = props;
+
+export default function Products() {
+const { onAdd } = useBasket();
 
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(producsRetriever);

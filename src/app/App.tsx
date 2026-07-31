@@ -26,7 +26,6 @@ import { useGlobals } from './hooks/useGlobals';
 function App() {
 const location = useLocation();
 const {setAuthMember} = useGlobals();
-const { cartItems, onAdd , onRemove,onDelate, onDeleteAll} = useBasket();
 const [signupOpen , setSignupOpen] = useState<boolean>(false);
 const [loginOpen, setLoginOpen] = useState<boolean>(false);
 const [anchorEl , setAnchorEl] = useState<HTMLElement | null>(null);
@@ -57,35 +56,27 @@ const handleLogoutRequest = async () => {
   return (  
      <>
         {location.pathname === "/" ? (
-        <HomeNavbar cartItems={cartItems}
-         onAdd ={onAdd}
-         onRemove={onRemove}
-         onDelate={onDelate} 
-         onDeleteAll={onDeleteAll}
-         setSignupOpen={setSignupOpen}
-         setLoginOpen={setLoginOpen}
-         anchorEl={anchorEl}
-         handleLogoutClick ={handleLogoutClick}
-         handleCloseLogout={handleCloseLogout}
-         handleLogoutRequest={handleLogoutRequest}
-         /> // Props 
-        ) : (
-         <OtherNavbar cartItems={cartItems} 
-          onAdd = {onAdd}
-          onRemove={onRemove}
-           onDelate={onDelate} 
-           onDeleteAll={onDeleteAll}
-           setSignupOpen={setSignupOpen}
-           setLoginOpen={setLoginOpen}
-           anchorEl={anchorEl}
-          handleLogoutClick ={handleLogoutClick}
+        <HomeNavbar
+          setSignupOpen={setSignupOpen}
+          setLoginOpen={setLoginOpen}
+          anchorEl={anchorEl}
+          handleLogoutClick={handleLogoutClick}
           handleCloseLogout={handleCloseLogout}
           handleLogoutRequest={handleLogoutRequest}
-           />
+        />
+        ) : (
+         <OtherNavbar
+          setSignupOpen={setSignupOpen}
+          setLoginOpen={setLoginOpen}
+          anchorEl={anchorEl}
+          handleLogoutClick={handleLogoutClick}
+          handleCloseLogout={handleCloseLogout}
+          handleLogoutRequest={handleLogoutRequest}
+         />
         )}
         <Switch>
           <Route path="/products">
-            <ProductPage onAdd ={onAdd} />
+            <ProductPage />
           </Route>
           <Route path="/orders">
             <OrdersPage />

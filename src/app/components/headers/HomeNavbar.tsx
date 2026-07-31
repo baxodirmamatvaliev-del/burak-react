@@ -2,17 +2,11 @@ import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mu
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import React, { useEffect, useState } from "react";
-import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
 
 interface HomeNavbarProps {
-  cartItems: CartItem[];
-  onAdd: (item: CartItem) => void;
-  onRemove: (item: CartItem) => void;
-  onDelate: (item: CartItem) => void;
-  onDeleteAll: () => void;
   setSignupOpen: (isOpen: boolean) => void;
   setLoginOpen: (isOpen: boolean) => void;
    handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
@@ -21,22 +15,18 @@ interface HomeNavbarProps {
    handleLogoutRequest: () => void;
 }
 
-export  default  function HomeNavbar (props: HomeNavbarProps) {
-   const { cartItems, 
-    onAdd,
-     onRemove, 
-     onDelate, 
-     onDeleteAll,
-     setSignupOpen ,
-     setLoginOpen,
-     handleLogoutClick,
-     handleCloseLogout,
-     anchorEl,
-     handleLogoutRequest
-    }= props;
-    const {authMember} =useGlobals();
 
-    
+export  default  function HomeNavbar (props: HomeNavbarProps) {
+  const {
+    setSignupOpen,
+    setLoginOpen,
+    handleLogoutClick,
+    handleCloseLogout,
+    anchorEl,
+    handleLogoutRequest,
+  } = props;
+  const {authMember} =useGlobals();
+
     return (
         <div className="home-navbar">
   <Container className="navbar-container ">
@@ -66,13 +56,7 @@ export  default  function HomeNavbar (props: HomeNavbarProps) {
         <Box className={"hover-line"} >
         <NavLink to="/help" activeClassName={"underline"}>help</NavLink>
       </Box> 
-      <Basket
-        cartItems={cartItems}
-        onAdd={onAdd}
-        onRemove={onRemove}
-        onDelate={onDelate}
-        onDeleteAll={onDeleteAll}
-      />
+      <Basket/>
       {!authMember ? (<Box><Button variant="contained" className="login-button" onClick={() => setLoginOpen(true)}
       >Login</Button>
       </Box>

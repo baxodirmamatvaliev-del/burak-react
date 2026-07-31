@@ -1,18 +1,12 @@
 import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { CartItem } from "../../../lib/types/search";
 import Basket from "./Basket";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
 
 interface  OtherNavbarProps {
-  cartItems: CartItem[];
-  onAdd: (item: CartItem) => void;
-  onRemove: (item: CartItem) => void;
-  onDelate: (item: CartItem) => void;
-  onDeleteAll: () => void;
   setSignupOpen: (isOpen: boolean) => void;
   setLoginOpen: (isOpen: boolean) => void;
   handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
@@ -20,20 +14,13 @@ interface  OtherNavbarProps {
   handleCloseLogout: () => void;
   handleLogoutRequest: () => void;
 }
-
 export default function OtherNavbar (props: OtherNavbarProps) {
-
-  const {cartItems,
-     onAdd,
-    onRemove, 
-    onDelate, 
-    onDeleteAll,
-    setSignupOpen ,
-    setLoginOpen ,
+  const {
+    setLoginOpen,
     handleLogoutClick,
     handleCloseLogout,
     anchorEl,
-    handleLogoutRequest
+    handleLogoutRequest,
   } = props;
 
 const { authMember } = useGlobals();
@@ -67,13 +54,7 @@ const { authMember } = useGlobals();
         <Box className={"hover-line"} >
         <NavLink to="/help" activeClassName={"underline"}>help</NavLink>
       </Box>
-        <Basket 
-        cartItems={cartItems}
-         onAdd ={onAdd}
-         onRemove={onRemove}
-         onDelate={onDelate} 
-         onDeleteAll={onDeleteAll}
-         />
+        <Basket />
 
       {!authMember ? (
         <Box><Button variant="contained" className="login-button" onClick={() => setLoginOpen(true)}

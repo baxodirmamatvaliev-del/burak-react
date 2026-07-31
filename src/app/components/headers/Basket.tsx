@@ -7,19 +7,13 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
-import { CartItem } from "../../../lib/types/search";
 import { serverApi } from "../../../lib/config";
+import useBasket from "../../hooks/useBasket";
 
-interface BasketProps {
-  cartItems: CartItem[];
-  onAdd: (item: CartItem) => void;
-  onRemove: (item: CartItem) => void;
-  onDelate: (item: CartItem) => void;
-  onDeleteAll: () => void;
-}
+import { CartItem } from "../../../lib/types/search";
 
-export default function Basket(props: BasketProps) {
-  const { cartItems, onAdd, onRemove, onDelate, onDeleteAll } = props;
+export default function Basket() {
+  const { cartItems, onAdd, onRemove, onDelate, onDeleteAll } = useBasket();
   const itemsPrice: number = cartItems.reduce((a: number , c: CartItem) => 
     a + c.quantity * c.price, 0) // product larni narxi ni kelib chiqaradi BASKET ichi
 

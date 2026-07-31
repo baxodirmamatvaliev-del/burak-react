@@ -10,17 +10,20 @@ import theme from './theme';
 import { BrowserRouter as Router,} from "react-router-dom";
 import './css/index.css';
 import ContextProvider from './app/context/ContextProvider';
+import BasketProvider from './app/context/BasketContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ContextProvider>
+        <BasketProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
           <App />
         </Router>
       </ThemeProvider>
+      </BasketProvider>
       </ContextProvider>
 
     </Provider>
