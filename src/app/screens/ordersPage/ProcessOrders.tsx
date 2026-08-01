@@ -3,15 +3,18 @@ import { Box, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import TabPanel from "@mui/lab/TabPanel";
 import moment from "moment";
-
-
 import {  useSelector } from "react-redux";
 import { createSelector } from "@reduxjs/toolkit"; 
 import {retrieveProcessOrders } from "./selector";
 import { Product } from "../../../lib/types/product"; 
-import { serverApi } from "../../../lib/config";
-import { Order, OrderItem } from "../../../lib/types/order";
+import { Messages, serverApi } from "../../../lib/config";
+import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/order";
 import PausedOrders from "./PausedOrders";
+import { useGlobals } from "../../hooks/useGlobals";
+import { T } from "../../../lib/types/common";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderService";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
 
 
 /** REDUX SLICE & SELECTOR **/ 
@@ -20,9 +23,39 @@ const processOrdersRetriever = createSelector(
   retrieveProcessOrders,
  (processOrders) =>  ({ processOrders }));
 
+ interface ProcessOrdersProps{
+  setValue: (input: string) => void;
+ }
 
-export default function ProcessOrders() {
+
+export default function ProcessOrders(props: ProcessOrdersProps ) {
+  const {setValue} = props;
+  const {authMember, setOrderBuilder} = useGlobals();
  const { processOrders } = useSelector(processOrdersRetriever);
+
+/** HANDLERS **/
+const finishOrderHandler = async (e: T) => {
+      try{
+        if(!authMember) throw new Error(Messages.error2);
+        //PAYMENT PROCESS
+      const orderId = e.target.value;
+      const input:  OrderUpdateInput ={
+        orderId: orderId, orderStatus: OrderStatus.FINISH
+      };
+
+      const confirmation = window.confirm("Have you recaived your order?");
+      if(confirmation) {
+        const order = new OrderService();
+        await order.updateOrder(input);
+      setValue("3")
+        setOrderBuilder(new Date()); // ozgargan vaqtini ham yangilab olyapmz
+      }
+
+      }catch(err) {
+        console.log(err);
+        sweetErrorHandling(err).then();
+      }
+     }
 
   return (
     <TabPanel value={"2"}>
@@ -73,7 +106,12 @@ export default function ProcessOrders() {
                 <p className={"data-compl"}>
                   {moment().format("YY-MM-DD HH:mm")}
                 </p>
-                <Button variant="contained" className={"verify-button"}>
+                <Button 
+                 value={order._id}
+                variant="contained"
+                 className={"verify-button"}
+                 onClick={finishOrderHandler}
+                 >
                   Verify to Fulfil
                 </Button>
               </Box>

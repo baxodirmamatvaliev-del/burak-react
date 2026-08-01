@@ -25,7 +25,7 @@ export default function Basket() {
 
   const totalPrice = (itemsPrice + shippingCost).toFixed(1)
 
-  const {authMember} = useGlobals();
+  const {authMember, setOrderBuilder} = useGlobals();
   const history = useHistory();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -50,7 +50,7 @@ export default function Basket() {
 
     onDeleteAll();
 
-    /** REFRESH VIA CONTEXT**/
+    setOrderBuilder(new Date());
     history.push("/orders");
 
    }catch(err){

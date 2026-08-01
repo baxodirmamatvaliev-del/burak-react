@@ -8,11 +8,11 @@ const [authMember, setAuthMember] = useState<Member | null>(
     localStorage.getItem("memberData") ? JSON.parse( localStorage.getItem("memberData") as string)
      : null
 );
-
+const [orderBuilder, setOrderBuilder] = useState<Date>(new Date())
 console.log("=== verifay === ")
 
 return (
-    <GlobalContext.Provider value={{ authMember, setAuthMember }}>
+    <GlobalContext.Provider value={{ authMember, setAuthMember, orderBuilder,setOrderBuilder }}>
         {children}
     </GlobalContext.Provider>
 );
