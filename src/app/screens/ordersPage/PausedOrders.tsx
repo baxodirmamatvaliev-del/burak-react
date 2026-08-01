@@ -22,6 +22,8 @@ retrievePousedOrders,
 
 export default function PausedOrders() {
      const { pausedOrders} = useSelector(pausedOrdersRetriever);
+
+     /** HANDLER **/
   
   return (
     <TabPanel value={"1"}>
@@ -41,7 +43,7 @@ export default function PausedOrders() {
                         src={imagePath}
                         className={"order-dish-img"}
                       />
-                      <p className={"title-dish"}>Lavash</p>
+                      <p className={"title-dish"}>{product.productName}</p>
                       <Box className={"price-box"}>
                         <p>${item.itemPrice}</p>
                         <img src={"/icons/close.svg"} />
