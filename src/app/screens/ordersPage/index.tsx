@@ -13,9 +13,10 @@ import { setPausedOrders,setProcessOrders,setFinishedOrders} from "./slice";
 import "../../../css/order.css";
 import { Order, OrderInquiry } from "../../../lib/types/order";
 import { OrderStatus } from "../../../lib/enums/order.enum";
-import OrderService from "../../services/OrderService";
+import OrderService, { serverApi } from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobals";
 import { useHistory } from "react-router-dom";
+import { MemberType } from "../../../lib/enums/member.enum";
 /** REDUX SLICE & SELECTOR **/
 
 const actionDispatch = (dispatch: Dispatch) =>({
@@ -98,27 +99,35 @@ const {orderBuilder, authMember} =useGlobals();
             <Box className={"member-box"}>
               <div className={"order-user-img"}>
                 <img
-                  src={"/icons/default-user.svg"}
+                  src={  authMember?.memberImage ? 
+                      `${serverApi}/${authMember.memberImage}`
+                      : "/icons/default-user.svg" }
                   className={"order-user-avatar"}
                   alt="User avatar"
                 />
                 <div className={"order-user-icon-box"}>
                   <img
-                    src={"/icons/user-badge.svg"}
+                    src={   authMember?.memberType === MemberType.RESTAURANT 
+                     ? "/icons/user-restaurant.svg" 
+                     : "/icons/user-badge.svg"
+                    }
                     className={"order-user-prof-img"}
                     alt="User badge"
                   />
                 </div>
               </div>
-              <span className={"order-user-name"}>Martin</span>
-              <span className={"order-user-prof"}>User</span>
+              <span className={"order-user-name"}>{authMember?.memberNick}</span>
+              <span className={"order-user-prof"}>{authMember?.memberType}</span>
             </Box>
             <Box className={"liner"}></Box>
             <Box className={"order-user-address"}>
               <div style={{ display: "flex" }}>
                 <LocationOnIcon />
               </div>
-              <div className={"spec-address-txt"}>Do not exist</div>
+              <div className={"spec-address-txt"}> 
+                  {authMember?.memberAddress ? authMember.
+                  memberAddress : "Do not exist"
+                  }</div>
             </Box>
           </Box>
           <Box className={"order-info-box"} sx={{ mt: "15px" }}>
