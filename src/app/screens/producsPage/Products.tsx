@@ -22,21 +22,15 @@ import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 import useBasket from "../../hooks/useBasket";
 
-
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) =>({
  setProducts: (data : Product[]) => dispatch(setProducts(data)),
 });
-
 const producsRetriever = createSelector(
 retriveProducts, (products) =>
     ({ products }));
-
-
-
 export default function Products() {
 const { onAdd } = useBasket();
-
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(producsRetriever);
   const [ productSearch , setProductSearch] = useState<ProductInquiry>({
@@ -46,7 +40,6 @@ const { onAdd } = useBasket();
         productCollection: ProductCollection.DISH,
         search: "",
   });
-
   useEffect(() => {
     const product = new ProductService();
 
