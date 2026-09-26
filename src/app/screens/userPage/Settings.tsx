@@ -17,7 +17,7 @@ export function Settings() {
   const [memberImage, setMemberImage] = useState<string>(
     authMember?.memberImage ? 
     `${serverApi}/${authMember.memberImage}`
-    : "/icons/default-user.svg" 
+     : "/icons/default-user.svg" 
   )
 
   const [memberUpdataInput , setMemberUpdataInput] =
@@ -52,6 +52,7 @@ const memberDescriptionHandler =(e: T) => {
  setMemberUpdataInput({...memberUpdataInput});
 }
 
+// VALIDATION: submit bosilganda tekchirish va agar hammasi togri bolsa serverga yuborish 
 const handleSubmitButton = async () => {
   try{
   if(!authMember) throw new Error(Messages.error2)
@@ -69,7 +70,7 @@ const handleSubmitButton = async () => {
   const result = await member.updateMember(memberUpdataInput);
   setAuthMember(result);
 
-  await sweetTopSmallSuccessAlert("Modifiet successfully!", 2000)
+  await sweetTopSmallSuccessAlert("Modifiet successfully!", 2000);
   }catch(err){
   console.log(err);
   sweetErrorHandling(err).then();
@@ -90,11 +91,10 @@ const handleImageViewer = (e: T) => {
      if(file){
       memberUpdataInput.memberImage = file;
       setMemberUpdataInput({...memberUpdataInput})
-      setMemberImage(URL.createObjectURL(file));
+      setMemberImage(URL.createObjectURL(file));  //preview;
      }
    }
    
-
 }
 
   return (
