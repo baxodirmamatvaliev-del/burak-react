@@ -9,7 +9,7 @@ import { useGlobals } from "../../hooks/useGlobals";
 import { useHistory } from "react-router-dom";
 import { serverApi } from "../../services/OrderService";
 import { MemberType } from "../../../lib/enums/member.enum";
-import "../../../css/UserPage.css";
+import "../../../css/userPage.css";
 
 export default function UserPage() {
   const history = useHistory();
