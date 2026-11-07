@@ -1,177 +1,127 @@
-.home-navbar {
+/* Klinika surati kelguncha vaqtinchalik sokin fon ishlatiladi. */
+.clinic-hero {
+  min-height: 410px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #54534e 0%, #77766c 48%, #c9bba6 100%);
+  color: #fff;
+  font-family: Arial, "Malgun Gothic", sans-serif;
+}
+
+.clinic-hero .clinic-hero-content {
+  padding: 56px 4%;
+}
+
+.clinic-hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 3.8vw, 56px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -1.5px;
+  overflow-wrap: break-word;
+}
+
+.clinic-hero p {
+  margin: 0;
+  font-size: clamp(18px, 1.9vw, 28px);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.clinic-hero .clinic-tour {
+  margin-top: 24px;
+  padding: 4px 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.clinic-hero .clinic-tour.Mui-disabled {
+  color: #fff;
+}
+
+.clinic-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   width: 100%;
-  height: 773px;
-  display: flex;
-  background: url("../../public/img/banner.webp");
-  background-size: cover;
+  background: #fff;
+  border-bottom: 1px solid #d8d8d8;
+  font-family: Arial, "Malgun Gothic", sans-serif;
 }
 
-
-.home-navbar .navbar-container {
-    margin-top: 55px;
-    height: 642px;
+.clinic-quick-actions .MuiButton-root {
+  min-width: 0;
+  min-height: 106px;
+  gap: 24px;
+  padding: 20px 12px;
+  border: 1px solid #dedede;
+  border-top: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  color: #111;
+  font-family: inherit;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.home-navbar .navbar-container .menu{
-height: 50px;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
+.clinic-quick-actions .MuiButton-root.Mui-disabled {
+  color: #111;
 }
 
-.home-navbar .navbar-container .menu .brand-logo{
- width: 120px;
- height: 30px;
+.clinic-quick-actions .MuiSvgIcon-root {
+  flex-shrink: 0;
+  color: #075e57;
+  font-size: 54px;
 }
 
-.home-navbar .navbar-container .menu .links{
- min-width: 700px;
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- align-items: center;
+.clinic-quick-actions .clinic-quick-booking,
+.clinic-quick-actions .clinic-quick-booking.Mui-disabled {
+  background: #075e57;
+  color: #fff;
 }
 
-.home-navbar .navbar-container .menu .links .login-button{
- background: #3776cc;
- color: #f8f8ff;
+.clinic-quick-booking .MuiSvgIcon-root {
+  color: inherit;
 }
 
-.home-navbar .navbar-container .menu .user-avatar{
- height: 50px;
- width: 50px;
- border-radius: 24px;
+@media (max-width: 600px) {
+  .clinic-hero {
+    min-height: 340px;
+  }
+
+  .clinic-hero .clinic-hero-content {
+    padding: 48px 20px;
+  }
+
+  .clinic-hero h1 {
+    max-width: 360px;
+    letter-spacing: -1px;
+    word-break: keep-all;
+  }
+
+  .clinic-hero .clinic-tour {
+    font-size: 20px;
+  }
+
+  .clinic-quick-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clinic-quick-actions .MuiButton-root {
+    min-height: 96px;
+    gap: 10px;
+    padding: 16px 8px;
+    border-bottom: 1px solid #dedede;
+    font-size: 18px;
+  }
+
+  .clinic-quick-actions .MuiSvgIcon-root {
+    font-size: 36px;
+  }
 }
-
-
-
-.home-navbar a {
-  color: #f8f8ff;
-  text-decoration: none;
-}
-
-.home-navbar .hover-line {
-  color: #f8f8ff;
-  z-index: 100;
-}
-
-.home-navbar .underline {
-  display: block;
-  content: "";
-  border-bottom: solid 2px #d7b686;
-}
-
- .home-navbar .hover-line:after {
-  display: block;
-  content: "";
-  border-bottom: solid 2px #d7b686;
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
-}
-
-.home-navbar .hover-line:hover:after {
-  transform: scaleX(1);
-}
-
-.home-navbar div.hover-line:after {
-  transform-origin: 0% 50%;
-}
-
-
-
-.home-navbar .navbar-container .header-frame {
-  margin-top: 142px ;
-  height: 462px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-
-.home-navbar .navbar-container .header-frame .detail{
-  width: 510px;
-  display: flex;
-  flex-direction: column;
-}
-
-.home-navbar .navbar-container .header-frame .detail .head-main-txt{
- width: 450px;
- height: 150px;
- font-family: "Roboto Serife";
- font-size: 50px;
- font-style: normal;
- font-weight: 500;
- line-height: normal;
- letter-spacing: -0.75px ;
- color: #f8f8ff;
-}
-.home-navbar .navbar-container .header-frame .detail .wel-txt{
- width: 510px;
- height: 42px;
-
- font-family: "Roboto Serife";
- font-size: 36px;
- font-style: normal;
- font-weight: 400;
- line-height: normal;
- letter-spacing: -0.54px ;
- color: #d7b686;
-}
-
-.home-navbar .navbar-container .header-frame .detail .service-txt{
- margin-top: 23px;
- width: 153px;
- height: 23px;
-
- font-family: "Roboto Serife";
- font-size: 20px;
- font-style: normal;
- font-weight: 400;
- line-height: normal;
- letter-spacing: -0.3 px ;
- color: #d5d5d5;
-}
-
-.home-navbar .navbar-container .detail .signup {
-    margin-top: 73px;
-}
-.home-navbar .navbar-container .detail .signup .sigup-botton {
-   width: 210px;
-   height: 60px;
-   border-radius: 4px;
-   background: #1976d2; 
-
-   text-align: center;
-   font-family: Poppins;
-   font-size: 17px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: normal;
-   color: #f8f8ff;
-}
-
-
-.home-navbar .navbar-container .logo-frame{
-    margin-top: 43px;
-    width: 690px;
-    height: 419px;
-}
-
-
-.home-navbar .navbar-container .logo-frame .logo-img {
-    width: 100%;
-    height: 100%;
-
-    background: url("/public/img/logo.webp");
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: invert(21%);
-} 
-
-
-
-
 
 .other-navbar {
   width: 100%;
