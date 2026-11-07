@@ -3,8 +3,12 @@
     height: auto;
 }
 
-/* Bosh sahifadagi davolash xizmatlari ro‘yxati. */
+/* Davolash ro‘yxati va ish vaqti panelining moslashuvchan joylashuvi. */
 .homepage .treatment-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
   padding: 52px 4% 44px;
   background: #fff;
   color: #111;
@@ -12,7 +16,7 @@
 }
 
 .treatment-guide .treatment-guide-content {
-  width: 64%;
+  min-width: 0;
 }
 
 .treatment-guide h2 {
@@ -45,9 +49,27 @@
   line-height: 1.6;
 }
 
+.treatment-guide .clinic-hours {
+  padding: 28px 40px;
+  min-height: 260px;
+  border-radius: 4px;
+  background: #f6f4f0;
+}
+
+.clinic-hours h2 {
+  font-size: 32px;
+  word-break: keep-all;
+}
+
+.clinic-hours p {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 900px) {
-  .treatment-guide .treatment-guide-content {
-    width: 100%;
+  .homepage .treatment-guide {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
   }
 }
 
@@ -58,6 +80,11 @@
 
   .treatment-guide h2 {
     font-size: 28px;
+  }
+
+  .treatment-guide .clinic-hours {
+    padding: 24px;
+    min-height: 0;
   }
 
   .treatment-guide .treatment-list li {
