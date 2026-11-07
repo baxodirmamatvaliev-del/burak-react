@@ -335,3 +335,81 @@
 	justify-content: flex-end;
 	margin-top: 25px;
 }
+
+/* Qabul tarixi mavjud profil ustunlaridan mustaqil moslashadi. */
+.user-page .appointment-history {
+  margin-top: 40px;
+  padding: 28px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+}
+
+.appointment-history h2 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.appointment-history p {
+  margin: 8px 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.appointment-history .appointment-timezone {
+  color: #555;
+}
+
+.appointment-history-list {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #ddd;
+}
+
+.appointment-history-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.appointment-datetime {
+  min-width: 0;
+}
+
+.appointment-date {
+  font-weight: 600;
+}
+
+.appointment-history .appointment-status {
+  flex-shrink: 0;
+  background: #e8f2f1;
+  color: #075e57;
+}
+
+.appointment-history .MuiButton-root {
+  min-height: 44px;
+  color: #075e57;
+}
+
+@media (max-width: 600px) {
+  .user-page .appointment-history {
+    margin-top: 24px;
+    padding: 20px 16px;
+  }
+
+  .appointment-history h2 {
+    font-size: 24px;
+  }
+
+  .appointment-history-list li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

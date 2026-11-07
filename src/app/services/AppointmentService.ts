@@ -10,6 +10,18 @@ class AppointmentService {
         this.path = serverApi;
     }
 
+    // Cookie orqali tasdiqlangan a’zoning qabul tarixini sahifalab oladi.
+    public async getMyAppointments(page = 1, limit = 8): Promise<Appointment[]> {
+        const { data } = await axios.get<Appointment[]>(`${this.path}/appointment/all`, {
+            params: { page, limit },
+            withCredentials: true,
+        });
+        if (!Array.isArray(data)) {
+            throw new Error("Invalid appointment history response");
+        }
+        return data;
+    }
+
     // Shifokor, davolash turi va Seul sanasi uchun bo‘sh vaqtlarni so‘raydi.
     public async getAvailability(dentistId: string, treatmentId: string, date: string): Promise<AppointmentSlot[]> {
         const { data } = await axios.get<AppointmentSlot[]>(`${this.path}/appointment/availability`, {

@@ -4,6 +4,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import AppointmentHistory from "./AppointmentHistory";
 import { Settings } from "./Settings";
 import { useGlobals } from "../../hooks/useGlobals";
 import { useHistory } from "react-router-dom";
@@ -21,6 +22,7 @@ export default function UserPage() {
   return (
     <div className={"user-page"}>
       <Container>
+        {authMember && <AppointmentHistory key={authMember._id} />}
         <Stack className={"my-page-frame"}>
           <Stack className={"my-page-left"}>
             <Box display={"flex"} flexDirection={"column"}>
