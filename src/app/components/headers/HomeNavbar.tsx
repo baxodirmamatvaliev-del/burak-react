@@ -1,6 +1,7 @@
 import { Box, Button, Container } from "@mui/material";
 import { AccessTimeOutlined, CalendarMonthOutlined, EastOutlined, LocalPhoneOutlined, LocationOnOutlined } from "@mui/icons-material";
 import React from "react";
+import { Link } from "react-router-dom";
 import OtherNavbar from "./OtherNavbar";
 
 interface HomeNavbarProps {
@@ -22,22 +23,22 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Container maxWidth={false} className="clinic-hero-content">
           <Box component="h1" id="clinic-hero-title">우리 동네, 서울온치과</Box>
           <Box component="p">진료부터 예약까지 한눈에 확인하세요.</Box>
-          <Button disabled className="clinic-tour" endIcon={<EastOutlined />} title="치과 소개 페이지 준비 중">
+          <Button component={Link} to="/#introduction" className="clinic-tour" endIcon={<EastOutlined />}>
             치과 둘러보기
           </Button>
         </Container>
       </Box>
       <Box component="nav" className="clinic-quick-actions" aria-label="진료 바로가기">
-        <Button disabled className="clinic-quick-booking" title="예약 페이지 준비 중">
+        <Button component={Link} to="/booking" className="clinic-quick-booking">
           <CalendarMonthOutlined /><span>진료 예약</span>
         </Button>
-        <Button disabled title="진료시간 확인 후 안내 예정">
+        <Button component={Link} to="/#clinic-hours">
           <AccessTimeOutlined /><span>진료시간</span>
         </Button>
-        <Button disabled title="전화번호 확인 후 안내 예정">
+        <Button component={Link} to="/#contact">
           <LocalPhoneOutlined /><span>전화 문의</span>
         </Button>
-        <Button disabled title="위치 확인 후 안내 예정">
+        <Button component={Link} to="/#directions">
           <LocationOnOutlined /><span>오시는 길</span>
         </Button>
       </Box>

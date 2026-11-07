@@ -42,11 +42,11 @@ export function Statistics() {
 
     return (
         <Container component="section" maxWidth={false} className="treatment-guide" aria-labelledby="treatment-guide-title">
-            <Box className="treatment-guide-content">
+            <Box className="treatment-guide-content" id="treatments" tabIndex={-1}>
                 <Box component="h2" id="treatment-guide-title">진료 안내</Box>
                 {content}
             </Box>
-            <Box component="aside" className="clinic-hours" aria-labelledby="clinic-hours-title">
+            <Box component="aside" className="clinic-hours" id="clinic-hours" tabIndex={-1} aria-labelledby="clinic-hours-title">
                 <Box component="h2" id="clinic-hours-title">진료시간 안내</Box>
                 <Box component="p">진료시간은 추후 안내해 드리겠습니다.</Box>
             </Box>

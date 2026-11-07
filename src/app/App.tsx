@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import  HomePage  from './screens/homePage';
 import  ProductPage  from './screens/producsPage';
@@ -7,6 +7,7 @@ import  UserPage from './screens/userPage';
 import  HomeNavbar  from './components/headers/HomeNavbar';
 import  OtherNavbar  from './components/headers/OtherNavbar';
 import  Footer  from './components/footer';
+import BookingPage from "./screens/bookingPage";
 import  HelpPage from './screens/helpPage';
 import useBasket from './hooks/useBasket';
 import AuthenticationModal from './components/auth';
@@ -26,6 +27,22 @@ const [loginOpen, setLoginOpen] = useState<boolean>(false);
 const [anchorEl , setAnchorEl] = useState<HTMLElement | null>(null);
 
 /** HANDLARS **/
+
+// Boshqa sahifadan kelgan havolani homepage bo‘limiga aylantirib, fokusni ko‘chiradi.
+useEffect(() => {
+  if (location.pathname !== "/" || !location.hash) {
+    window.scrollTo(0, 0);
+    return;
+  }
+  const frame = window.requestAnimationFrame(() => {
+    const section = document.getElementById(location.hash.slice(1));
+    if (section) {
+      section.scrollIntoView({ block: "start" });
+      section.focus({ preventScroll: true });
+    }
+  });
+  return () => window.cancelAnimationFrame(frame);
+}, [location.pathname, location.hash, location.key]);
 
 const handlerSigupClose= () => setSignupOpen(false);
 const handlerLoginClose= () => setLoginOpen(false);
@@ -70,6 +87,9 @@ const handleLogoutRequest = async () => {
          />
         )}
         <Switch>
+          <Route path="/booking">
+            <BookingPage openLogin={() => setLoginOpen(true)} />
+          </Route>
           <Route path="/products">
             <ProductPage />
           </Route>

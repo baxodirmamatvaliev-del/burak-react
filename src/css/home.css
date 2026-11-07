@@ -551,3 +551,84 @@
   background: #343434;
   border-radius: 50%;
 }
+/* Klinikaga oid tasdiqlangan ma’lumotlar va bo‘lim havolalari. */
+.homepage .clinic-information {
+  padding: 44px 4%;
+  color: #111;
+  background: #fff;
+  font-family: Arial, "Malgun Gothic", sans-serif;
+}
+
+.clinic-information h2 {
+  margin: 0 0 20px;
+  font-size: 36px;
+  line-height: 1.4;
+}
+
+.clinic-information p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.homepage [id][tabindex="-1"] {
+  scroll-margin-top: 20px;
+}
+
+.homepage [id][tabindex="-1"]:focus-visible {
+  outline: 2px solid #075e57;
+  outline-offset: -2px;
+}
+
+@media (max-width: 600px) {
+  .homepage .clinic-information {
+    padding: 32px 20px;
+  }
+
+  .clinic-information h2 {
+    font-size: 28px;
+  }
+}
+
+/* API dagi shifokorlar uchun sodda profil kartalari. */
+.dentist-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.dentist-list li {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.dentist-list img {
+  width: 120px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.dentist-list h3 {
+  margin: 16px 0 8px;
+  font-size: 24px;
+  overflow-wrap: anywhere;
+}
+
+.dentist-list .dentist-intro {
+  margin-top: 12px;
+  white-space: pre-line;
+}
+
+@media (max-width: 600px) {
+  .dentist-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

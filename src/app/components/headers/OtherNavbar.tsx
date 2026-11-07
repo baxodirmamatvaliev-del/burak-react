@@ -1,7 +1,7 @@
 import { Box, Button, Container, IconButton, Menu, MenuItem } from "@mui/material";
 import { MoreVert, PersonOutline } from "@mui/icons-material";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import { useGlobals } from "../../hooks/useGlobals";
 
@@ -37,13 +37,13 @@ export default function OtherNavbar(props: OtherNavbarProps) {
           <span>서울온치과</span>
         </NavLink>
         <Box component="nav" aria-label="주 메뉴" className="clinic-navigation">
-          <Button disabled>치과 소개</Button>
-          <Button disabled>진료 안내</Button>
-          <Button disabled>의료진 소개</Button>
-          <Button disabled>오시는 길</Button>
+          <Button component={Link} to="/#introduction">치과 소개</Button>
+          <Button component={Link} to="/#treatments">진료 안내</Button>
+          <Button component={Link} to="/#dentists">의료진 소개</Button>
+          <Button component={Link} to="/#directions">오시는 길</Button>
         </Box>
         <Box className="clinic-actions">
-          <Button variant="contained" disabled className="clinic-booking">진료 예약</Button>
+          <Button component={Link} to="/booking" variant="contained" className="clinic-booking">진료 예약</Button>
           {authMember ? (
             <IconButton component={NavLink} to="/member-page" aria-label="마이페이지" className="clinic-profile">
               <PersonOutline />

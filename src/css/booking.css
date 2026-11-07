@@ -1,0 +1,49 @@
+/* Mavjud klinika ranglarida moslashuvchan qabul formasi. */
+.booking-page {
+  padding: 48px 24px;
+  min-height: 460px;
+  color: #111;
+}
+
+.booking-page h1 {
+  margin: 0 0 24px;
+  font-size: 36px;
+}
+
+.booking-page p {
+  margin: 20px 0;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.booking-form {
+  display: grid;
+  gap: 24px;
+  max-width: 600px;
+  margin: 32px 0;
+}
+
+.booking-form > *,
+.booking-form .MuiFormControl-root {
+  min-width: 0;
+}
+
+.booking-page .MuiButton-contained {
+  background: #075e57;
+  color: #fff;
+}
+
+.booking-page .MuiButton-contained.Mui-disabled {
+  background: #e5e5e5;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .booking-page {
+    padding: 32px 20px;
+  }
+
+  .booking-page h1 {
+    font-size: 28px;
+  }
+}

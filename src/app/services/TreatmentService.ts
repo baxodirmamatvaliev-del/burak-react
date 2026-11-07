@@ -10,10 +10,10 @@ class TreatmentService {
         this.path = serverApi;
     }
 
-    // Faol davolash xizmatlari ro‘yxatini API orqali oladi.
-    public async getTreatments(): Promise<Treatment[]> {
+    // Faol davolash xizmatlarini so‘ralgan limit bilan API dan oladi.
+    public async getTreatments(limit = 8): Promise<Treatment[]> {
         try {
-            const { data } = await axios.get<Treatment[]>(`${this.path}/treatment/all`);
+            const { data } = await axios.get<Treatment[]>(`${this.path}/treatment/all`, { params: { limit } });
             if (!Array.isArray(data)) {
                 throw new Error("Invalid treatment list response");
             }

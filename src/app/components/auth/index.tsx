@@ -196,6 +196,7 @@ try{
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={loginOpen}
+        style={{ width: "100vw", height: "100dvh" }}
         onClose={handleLoginClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -207,12 +208,18 @@ try{
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "700px" }}
+            sx={{
+              width: "700px",
+              maxWidth: "calc(100vw - 32px)",
+              "& .login-modal-image": { display: { xs: "none", sm: "block" }, width: "45%" },
+            }}
           >
-            <ModalImg src={"/img/auth.webp"} alt="camera" />
+            <ModalImg className="login-modal-image" src={"/img/auth.webp"} alt="camera" />
             <Stack
               sx={{
-                marginLeft: "65px",
+                marginLeft: { xs: 0, sm: "24px" },
+                flex: 1,
+                minWidth: 0,
                 marginTop: "25px",
                 alignItems: "center",
               }}
