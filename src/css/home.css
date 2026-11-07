@@ -3,52 +3,67 @@
     height: auto;
 }
 
-/* STARISTICS */
+/* Bosh sahifadagi davolash xizmatlari ro‘yxati. */
+.homepage .treatment-guide {
+  padding: 52px 4% 44px;
+  background: #fff;
+  color: #111;
+  font-family: Arial, "Malgun Gothic", sans-serif;
+}
 
-.homepage .static-frame {
+.treatment-guide .treatment-guide-content {
+  width: 64%;
+}
+
+.treatment-guide h2 {
+  margin: 0 0 20px;
+  font-size: 36px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.treatment-guide .treatment-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #ddd;
+}
+
+.treatment-guide .treatment-list li {
+  padding: 12px 28px;
+  border-bottom: 1px solid #ddd;
+  font-size: 26px;
+  line-height: 1.4;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.treatment-guide p {
+  margin: 0;
+  padding: 20px 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .treatment-guide .treatment-guide-content {
     width: 100%;
-    height: 236px;
-    background: #343434;
-}
-.homepage .static-frame .info {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  }
 }
 
+@media (max-width: 600px) {
+  .homepage .treatment-guide {
+    padding: 32px 20px;
+  }
 
-.homepage .static-frame .info > .stattic-box {
-    width: 200px;
-    height: 116px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+  .treatment-guide h2 {
+    font-size: 28px;
+  }
 
-.homepage .static-frame .info .static-box .static-num,
-.homepage .static-frame .info > .stattic-box > .stattic-box {
-    text-align: center;
-    font-family: "Poppins";
-    font-size: 54px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 80px;
-    color: #d7b686;
-}
-
-
-.homepage .static-frame .info .static-box .stattic-text,
-.homepage .static-frame .info > .stattic-box > .stattic-text {
-    align-items: center;
-    font-family: "Poppins";
+  .treatment-guide .treatment-list li {
+    padding: 12px 8px;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 30px;
-    color: #d7b686;
+  }
 }
 
 /* POPULAR DISHES */

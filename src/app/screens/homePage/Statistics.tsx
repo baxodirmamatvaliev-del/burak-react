@@ -1,37 +1,51 @@
-import { Box, Container, Stack } from "@mui/material";
-import React from "react";
-import Divider from "../../components/divider";
+import { Box, Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import TreatmentService from "../../services/TreatmentService";
+import { Treatment } from "../../../lib/types/treatment";
 
-export function Statistics(){
-    return( 
-    <div>
-     <Container className={"static-frame"} >
-      <Stack className={"info"}>
-        <Stack className={"stattic-box"}>
-        <Box className={"stattic-box"}>12</Box>
-        <Box className={"stattic-text"}>Restaurants</Box>
-      </Stack>
+// Banner ostida API dan olingan davolash xizmatlarini ko‘rsatadi.
+export function Statistics() {
+    const [treatments, setTreatments] = useState<Treatment[] | null>(null);
+    const [loadError, setLoadError] = useState(false);
 
-     <Divider height="64" width="2" bg="#E3C08D" />
+    useEffect(() => {
+        let active = true;
+        const treatment = new TreatmentService();
+        treatment.getTreatments()
+            .then((data) => {
+                if (active) {
+                    setTreatments(data);
+                }
+            })
+            .catch(() => {
+                if (active) {
+                    setLoadError(true);
+                }
+            });
+        return () => { active = false; };
+    }, []);
 
-       <Stack className={"stattic-box"}>
-        <Box className={"stattic-box"}>8</Box>
-        <Box className={"stattic-text"}>Experoence</Box>
-      </Stack>
-       <Divider height="64" width="2" bg="#E3C08D" />
+    let content = <Box component="p" role="status">진료과목을 불러오는 중입니다.</Box>;
+    if (loadError) {
+        content = <Box component="p" role="alert">진료과목을 불러오지 못했습니다.</Box>;
+    } else if (treatments) {
+        content = treatments.length === 0 ? (
+            <Box component="p" role="status">등록된 진료과목이 없습니다.</Box>
+        ) : (
+            <Box component="ul" className="treatment-list">
+                {treatments.map((treatment) => (
+                    <Box component="li" key={treatment._id}>{treatment.treatmentName}</Box>
+                ))}
+            </Box>
+        );
+    }
 
-       <Stack className={"stattic-box"}>
-        <Box className={"stattic-box"}>59+</Box>
-        <Box className={"stattic-text"}>Menu</Box>
-      </Stack>
-      <Divider height="64" width="2" bg="#E3C08D" />
-
-       <Stack className={"stattic-box"}>
-        <Box className={"stattic-box"}>200+</Box>
-        <Box className={"stattic-text"}>Clients</Box>
-      </Stack>
-      </Stack>
-     </Container>
-    </div> 
+    return (
+        <Container component="section" maxWidth={false} className="treatment-guide" aria-labelledby="treatment-guide-title">
+            <Box className="treatment-guide-content">
+                <Box component="h2" id="treatment-guide-title">진료 안내</Box>
+                {content}
+            </Box>
+        </Container>
     );
 }
