@@ -11,6 +11,7 @@
 - Frontend: follow the existing component, service, state, and styling conventions.
 - Reuse existing methods and components before creating new ones.
 - Do not copy existing bugs or insecure behavior.
+- Add a short Uzbek comment above each API route and its controller and service methods. Explain what that specific layer does. For models/schemas, briefly explain what data they store. Avoid repeating identical comments.
 
 ## Scope
 - Implement only the requested step.
@@ -35,3 +36,22 @@
 - Do not continue, skip, or abort a rebase without user instruction.
 - Never expose credentials, tokens, or .env contents.
 - Never stage or commit .env files.
+
+## Uzbek Code Comments
+- Write short Uzbek comments above API routes and controller/service methods.
+- Explain each function's purpose and what it does in its layer.
+- Add a short Uzbek comment above each model/schema explaining what data it stores.
+- Apply this rule to all new or modified code.
+- Keep comments concise and accurate; avoid redundant comments.
+- Update comments when the related behavior changes.
+
+## Keep Code Simple and Reviewable
+- Prefer simple, direct code that matches existing project examples.
+- Use clear names, readable if blocks, and braces.
+- Avoid long combined conditions, nested ternaries, and flag-based methods that mix different operations.
+- Do not add unnecessary abstractions, wrappers, files, or duplicate logic.
+- Reuse existing helpers and schema validation where appropriate.
+- Preserve necessary validation, authorization, and upload safety.
+- Before finishing, review all code added for the current task and simplify unnecessary complexity.
+- Keep diffs focused; do not rewrite or reformat unrelated code.
+- Explain changes briefly, grouped by file, so the user can review them easily.
