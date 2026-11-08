@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import  HomePage  from './screens/homePage';
-import  ProductPage  from './screens/producsPage';
-import  OrdersPage  from './screens/ordersPage';
 import  UserPage from './screens/userPage';
 import  HomeNavbar  from './components/headers/HomeNavbar';
 import  OtherNavbar  from './components/headers/OtherNavbar';
 import  Footer  from './components/footer';
 import BookingPage from "./screens/bookingPage";
 import  HelpPage from './screens/helpPage';
-import useBasket from './hooks/useBasket';
 import AuthenticationModal from './components/auth';
 import { sweetErrorHandling, sweetTopSuccessAlert } from '../lib/sweetAlert';
 import { Messages } from '../lib/config';
@@ -89,12 +86,6 @@ const handleLogoutRequest = async () => {
         <Switch>
           <Route path="/booking">
             <BookingPage openLogin={() => setLoginOpen(true)} />
-          </Route>
-          <Route path="/products">
-            <ProductPage />
-          </Route>
-          <Route path="/orders">
-            <OrdersPage />
           </Route>
             <Route path="/member-page">
             <UserPage />

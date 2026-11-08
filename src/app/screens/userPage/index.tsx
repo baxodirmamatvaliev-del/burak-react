@@ -8,7 +8,7 @@ import AppointmentHistory from "./AppointmentHistory";
 import { Settings } from "./Settings";
 import { useGlobals } from "../../hooks/useGlobals";
 import { useHistory } from "react-router-dom";
-import { serverApi } from "../../services/OrderService";
+import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
 import "../../../css/userPage.css";
 
